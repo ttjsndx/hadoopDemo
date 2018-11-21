@@ -31,8 +31,8 @@ public class FlowSumDriver {
         job.setOutputValueClass(FlowBean.class);
 
         //指定本次mr 输入的数据路径 和最终输出结果存放在什么位置
-        FileInputFormat.setInputPaths(job,"D:\\hadoopDateSpace\\flowsum\\input\\1.txt");
-        FileOutputFormat.setOutputPath(job,new Path("D:\\hadoopDateSpace\\flowsum\\output"));
+        FileInputFormat.setInputPaths(job,"D:\\hdfs\\flowsum\\input\\1.txt");
+        FileOutputFormat.setOutputPath(job,new Path("D:\\hdfs\\flowsum\\output"));
         //FileInputFormat.setInputPaths(job,"/wordcount/input");
         //FileOutputFormat.setOutputPath(job,new Path("/wordcount/output"));
 

@@ -25,12 +25,11 @@ public class Mapper extends org.apache.hadoop.mapreduce.Mapper<LongWritable, Tex
         String direction = fields[7];
 
 
-
         long upFlow = Long.parseLong(fields[fields.length-3]);
         long downFlow = Long.parseLong(fields[fields.length-2]);
 
         //使用对象中的set方法来写入数据,避免大量new对象
-        k.set(phoneNum);
+        k.set(imei);
         v.set(upFlow,downFlow);
         context.write(k,v);
     }

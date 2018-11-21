@@ -11,13 +11,37 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 
 public class Driver {
-    public static void main(String[] args) throws Exception{
+
+
+    public static void main(String[] args) {
+        Driver driver = new Driver();
+
+        //1.计算目标车辆每一天的骑行时间段
+        HashMap RunTimeMap = driver.initRunTime();
+
+        try {
+            driver.initHadoop();
+        }catch (Exception e){
+            System.out.println("启动hadoop job失败:" + e);
+            return;
+        }
+    }
+
+    private HashMap initRunTime() {
+        HashMap map = new HashMap();
+        map.put("",1);
+        return map;
+    }
+
+    private void initHadoop() throws Exception {
         //通过Job来封装本次mr的相关信息
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
-
         //指定本次mr job jar包运行主类
         job.setJarByClass(Driver.class);
 
