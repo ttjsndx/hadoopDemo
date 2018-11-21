@@ -9,6 +9,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class FlowSumDriver {
     public static void main(String[] args) throws Exception{
+        long l = System.currentTimeMillis();
         //通过Job来封装本次mr的相关信息
         Configuration conf = new Configuration();
         //conf.set("mapreduce.framework.name","local");
@@ -38,6 +39,7 @@ public class FlowSumDriver {
         // job.submit(); //一般不要这个.
         //提交程序  并且监控打印程序执行情况
         boolean b = job.waitForCompletion(true);
+        System.out.println("花费时间：" + (System.currentTimeMillis() - l));
         System.exit(b?0:1);
     }
 }
